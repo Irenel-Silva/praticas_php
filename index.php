@@ -46,6 +46,10 @@
             Obrigado pela sua simpatia.
             LABEL;
             echo $texto;
+            echo '<br>';
+            echo 'Lopo da Silva\n\rTeste';
+            echo '<br>';
+            echo "Lopo da Silva\n\rTeste";
 
             
 
