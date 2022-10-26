@@ -24,6 +24,31 @@
             echo 3467 / 7;
             echo '<br>';
             echo 3462%7;
+            echo '<br>';
+            $x= 4**2;
+            echo $x;
+            echo '<br>';
+            echo $a=100;
+            echo '<br>';
+            echo $b=250;
+            echo '<br>';
+            $c= $a+$b;
+            echo ++$c;
+            echo '<br>';
+            $nome= 'Lopo';
+            $apelido= 'Silva';
+            echo $nome_completo= $nome .' '.$apelido;
+            echo '<br>';
+            $email= 'agua@gmail.com';
+            $texto= <<<LABEL
+            Ola, sr. $nome_completo. Serve a presente mensagem para informarquese encntra inscrito no curso.
+            Enviamos  o regulamento para o seu e-mail $email
+            Obrigado pela sua simpatia.
+            LABEL;
+            echo $texto;
+
+            
+
         ?>
 </body>
 </html>
