@@ -12,7 +12,10 @@
         echo  "Date is: ".date('j-m-y, h:i:s');
         ?>
         <?php
-        echo "Já esta";
+            echo "Já esta";
+        ?>
+        <?php
+            echo "Caminhando bem";
         ?>
 </body>
 </html>
