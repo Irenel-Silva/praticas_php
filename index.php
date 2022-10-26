@@ -17,5 +17,13 @@
         <?php
             echo "<br>\n Caminhando bem";
         ?>
+         <?php
+            $valor= 10;
+            echo $valor;
+            echo '<br>';
+            echo 3467 / 7;
+            echo '<br>';
+            echo 3462%7;
+        ?>
 </body>
 </html>
