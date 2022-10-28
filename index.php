@@ -127,6 +127,28 @@
                 $identificacao=$opcao==1 ? 'Alex' : 'Paulo';
                 $opcao ==1 ? $identificacao= 'Alex' : $identificacao='Paulo';
                 echo $opcao == 1 ? 'SIM' : 'NAO';
+
+
+                // Condicional Match php
+                echo '<br>';
+                echo match($opcao){
+                    0 => 'O valor é 0',
+                    1 => 'O valor é 1',
+                    2 => 'O valor é 2',
+                    default => 'Valor diferente de todos os outros'
+
+                };
+                echo '<br>';
+                $sal= '1';
+                echo match($sal){
+                    1 => 'Inteiro',
+                    '1' => 'String',
+                    default =>  ' Não faz parte'
+
+                };
+                echo '<hr>';
+
+
                 
                 ?>
                 <h2 style="color: <?= $opcao==1 ? 'RED' : 'YELLOWGIT' ?>">
