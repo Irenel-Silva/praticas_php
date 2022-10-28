@@ -50,7 +50,7 @@
             echo 'Lopo da Silva\n\rTeste';
             echo '<br>';
             echo "Lopo da Silva\n\rTeste";
-            $nome= 'lopo';
+            $nome= 'Barros';
             $apelido= 'sílva';
             
 
@@ -98,17 +98,29 @@
 
                     $nota=8;
                     if($nota<=2){
-                        echo 'Nota baixa' .'<br';
+                        echo 'Nota baixa' .'<br>';
                     }elseif($nota<=4){
-                        echo 'Nota Insuficiente' .'<br';
+                        echo 'Nota Insuficiente' .'<br>';
                     }elseif($nota<=6){
-                        echo 'Nota positiva' .'<br';
+                        echo 'Nota positiva' .'<br>';
                     }elseif($nota<=8){
-                        echo 'Nota  muito positiva' .'<br';
+                        echo 'Nota  muito positiva' .'<br>';
                     }else{
-                        echo 'Nota Excelente! ' .'<br';
+                        echo 'Nota Excelente! ' .'<br>';
                     }
-                    
+                  //Switch case
+                  $val= 5;
+                  switch ($nome) {
+                    case 'lopo':
+                        echo 'Segundo nome';
+                        break;
+                    case 'Irinel':
+                        echo 'Primeiro nome';
+                        break;
+                    default:
+                        echo 'O nome não Existe';
+                        break;
+                  }  
                 ?>
 
             </h1>
