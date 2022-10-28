@@ -73,6 +73,7 @@
                 <?= "O meu nome é " . mb_strtoupper($nome) . " O meu apelido é " . mb_strtoupper($apelido) ?>
                 <br>
                 <?php
+                    //Array Multidimensionais
                     $dados=[
                             [10,20,30,40],
                             [100,200,300,400],
@@ -91,7 +92,22 @@
                     echo $dados[0][3] . "<br>\n\r";
                     echo $cidades['Portugal'][1] . "<br>\n\r";
                     echo $dados[2][2] . "<br>\n\r";
-                    echo $cidades['Angola'][0] ."\n\r";
+                    echo $cidades['Angola'][0] ."<br>\n\r";
+
+                    // Usando If ...Elseif ...Else
+
+                    $nota=8;
+                    if($nota<=2){
+                        echo 'Nota baixa' .'<br';
+                    }elseif($nota<=4){
+                        echo 'Nota Insuficiente' .'<br';
+                    }elseif($nota<=6){
+                        echo 'Nota positiva' .'<br';
+                    }elseif($nota<=8){
+                        echo 'Nota  muito positiva' .'<br';
+                    }else{
+                        echo 'Nota Excelente! ' .'<br';
+                    }
                     
                 ?>
 
