@@ -18,7 +18,7 @@
             echo "<br>\n Caminhando bem";
         ?>
          <?php
-            $valor= 10;
+           /* $valor= 10;
             echo $valor;
             echo '<br>';
             echo 3467 / 7;
@@ -45,14 +45,35 @@
             Enviamos  o regulamento para o seu e-mail $email
             Obrigado pela sua simpatia.
             LABEL;
-            echo $texto;
+            echo $texto;*/
             echo '<br>';
             echo 'Lopo da Silva\n\rTeste';
             echo '<br>';
             echo "Lopo da Silva\n\rTeste";
+            $nome= 'lopo';
+            $apelido= 'sílva';
+            
+
 
             
 
         ?>
+        <h3>O Meu nome é: 
+            <h1>
+                <?= /*"$nome $apelido";'\n';
+                    $nome .' '. $apelido;*/"\n"
+                    ?>
+                <?php echo $nome .' ' . $apelido; ?>
+                <br>
+                <?= /*"O meu nome completo tem " . $nome_completo= strlen("$nome $apelido") . ' caracteres '*/ "\n" ?>
+                <?= "O meu nome completo tem " . $nome_completo= mb_strlen("$nome $apelido") . ' caracteres ' ?>
+                <br>
+                <?= "O meu nome é " . strtoupper($nome) . " O meu apelido é " . strtoupper($apelido) ?>
+                <br>
+                <?= "O meu nome é " . mb_strtoupper($nome) . " O meu apelido é " . mb_strtoupper($apelido) ?>
+            </h1>
+        </h3>
+
+
 </body>
 </html>
