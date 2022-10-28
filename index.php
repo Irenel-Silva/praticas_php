@@ -112,17 +112,26 @@
                   $val= 5;
                   switch ($nome) {
                     case 'lopo':
-                        echo 'Segundo nome';
+                        echo 'Segundo nome' . '<br>';
                         break;
                     case 'Irinel':
-                        echo 'Primeiro nome';
+                        echo 'Primeiro nome' . '<br>';
                         break;
                     default:
-                        echo 'O nome não Existe';
+                        echo 'O nome não Existe' . '<br>';
                         break;
                   }  
-                ?>
 
+                // operador ternário
+                $opcao=0;
+                $identificacao=$opcao==1 ? 'Alex' : 'Paulo';
+                $opcao ==1 ? $identificacao= 'Alex' : $identificacao='Paulo';
+                echo $opcao == 1 ? 'SIM' : 'NAO';
+                
+                ?>
+                <h2 style="color: <?= $opcao==1 ? 'RED' : 'YELLOWGIT' ?>">
+                  ESTE TEXTO TEM COR DEFINIDA PEELO PHP 
+                </h2>
             </h1>
         </h3>
 
