@@ -71,6 +71,30 @@
                 <?= "O meu nome é " . strtoupper($nome) . " O meu apelido é " . strtoupper($apelido) ?>
                 <br>
                 <?= "O meu nome é " . mb_strtoupper($nome) . " O meu apelido é " . mb_strtoupper($apelido) ?>
+                <br>
+                <?php
+                    $dados=[
+                            [10,20,30,40],
+                            [100,200,300,400],
+                            [1000,2000,3000,4000]
+
+                    ];
+                    $cidades= [
+                                'Portugal'=>['Lisboa', 'Porto','Coimbra'],
+                                'Brasil'=>['Brasília', 'São Paulo', 'Rio de Janeiro'],
+                                'Espanha'=>['Madrid', 'Barcelona', 'Sevilha'],
+                                'Angola'=>['Luanda','Benguela','Huambo']
+
+
+                    ];
+                    
+                    echo $dados[0][3] . "<br>\n\r";
+                    echo $cidades['Portugal'][1] . "<br>\n\r";
+                    echo $dados[2][2] . "<br>\n\r";
+                    echo $cidades['Angola'][0] ."\n\r";
+                    
+                ?>
+
             </h1>
         </h3>
 
