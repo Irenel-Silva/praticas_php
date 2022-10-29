@@ -153,17 +153,57 @@
                 $i=0;
                 while($i<10) 
                     echo $i++ .'<br>';
+                echo '<br>';
                 $i=0;
-                // do while
+                // do while php
                 do{
                     echo $i++ .'<br>';
                 }while($i<10);
+
+                //ciclo for no php
+                for ($i=0; $i <10 ; $i++) { 
+                    echo $i .'<br>';
+                }
+                echo '<br>';
+                for ($i=0, $y=10; $i < 10; $i++, $y--) { 
+                    echo $y .'<br>';
+                }
+                echo '<br>';
+                $nomes = ['Joao', 'Ana', 'Carlos'];
+                for ($i=0; $i <sizeof($nomes) ; $i++) {                 
+                     echo $nomes[$i] .'<br>';
+                }
+                echo '<br>';
+                $nomes = ['Pedro', 'George', 'Andre'];
+                for ($i=0; $i <count($nomes) ; $i++) {                 
+                     echo $nomes[$i] .'<br>';
+                }
+                echo '<br>';
+
+                // ciclo foreach
+                $nomes = ['Malaria', 'Palusdismo', 'Tifoide'];
+                foreach($nomes as $no){
+                    echo $no . '<br>';
+                }
+                echo '<br>';
+                $capitais = [
+                    'Angola'=> 'Luanda',
+                    'Cabo verde'=> 'Praia',
+                    'Guine Bissau'=> 'Bissau',
+                    'Mocambique'=> 'Maputo',
+                    'Sao Tome e Principe'=> 'Sao Tome'
+                ];
+
+                foreach($capitais as $key => $value) {
+                    echo "Para o País $key a capital é $value" . '<br>' ;
+                }
+                echo '<br>';
 
 
                 
                 ?>
                 <h2 style="color: <?= $opcao==1 ? 'RED' : 'YELLOWGIT' ?>">
-                  ESTE TEXTO TEM COR DEFINIDA PEELO PHP 
+                  ESTE TEXTO TEM COR DEFINIDA PELO PHP 
                 </h2>
             </h1>
         </h3>
