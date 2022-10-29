@@ -199,8 +199,58 @@
                 }
                 echo '<br>';
 
+                // Usando o  Break, continue e goto
+                    //BREAK
+                for ($i=0; $i < 5; $i++) { 
+                    echo $i. '<br>';
+                    if($i==2)
+                        break; // Interrompe o ciclo 
+                }
 
+
+                echo '<br>';
+                $nomes = ['Malaria', 'Palusdismo', 'Tifoide'];
+                foreach($nomes as $no){
+                    echo $no . '<br>';
+                    if($no=='Malaria'){break;}
+                }
+                echo '<br>';
+
+                //CONTINUE
+
+                for ($i=0; $i <3 ; $i++) { 
+                    if($i==1)
+                        continue;// Itera(incrementa) o valor sem imprimir o seu correspondente antes da iteração
+                    echo $i .'<br>';
+                }
+                echo '<br>';
+
+                $nomes = ['Malaria', 'Palusdismo', 'Tifoide'];
+                foreach($nomes as $no){
+                    if($no=='Malaria'){continue;}
+                    echo $no . '<br>';
+                }
+                echo '<br>';
+
+                //GOTO
+
+                for ($i=0; $i <3 ; $i++) { 
+                    if($i==1)
+                        goto teste;// SALTA PARA UM LABEL CORRESPONDENTE AO GOTO
+                    echo $i .'<br>';
+                }
+                echo 'Fim do loop ';
+                teste:
+                    echo 'Para aqui';
+                echo '<br>';
                 
+
+
+
+
+
+
+
                 ?>
                 <h2 style="color: <?= $opcao==1 ? 'RED' : 'YELLOWGIT' ?>">
                   ESTE TEXTO TEM COR DEFINIDA PELO PHP 
