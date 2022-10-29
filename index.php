@@ -147,6 +147,17 @@
 
                 };
                 echo '<hr>';
+                echo '<br>';
+
+                //While em PHP
+                $i=0;
+                while($i<10) 
+                    echo $i++ .'<br>';
+                $i=0;
+                // do while
+                do{
+                    echo $i++ .'<br>';
+                }while($i<10);
 
 
                 
