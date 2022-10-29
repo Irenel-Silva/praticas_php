@@ -232,18 +232,207 @@
                 }
                 echo '<br>';
 
-                //GOTO
+                #GOTO
 
                 for ($i=0; $i <3 ; $i++) { 
                     if($i==1)
-                        goto teste;// SALTA PARA UM LABEL CORRESPONDENTE AO GOTO
+                        goto teste; #SALTA PARA UM LABEL CORRESPONDENTE AO GOTO
                     echo $i .'<br>';
                 }
                 echo 'Fim do loop ';
                 teste:
                     echo 'Para aqui';
                 echo '<br>';
+                #Usando funções em PHP
+
+                echo 'Inicio do uso das funções';
+                echo '<br>';
+                executar();
+
+                function executar(){
+                    echo 'A função foi executada';
+                }
+                echo'<br>';
+                #Funções com passagem de parâmetros
+                adicionar(10,20);
+                function adicionar($a, $b){
+                    echo "$a + $b = " . $a + $b;
+                    echo'<br>';
+                    echo "$a + $b=" . ($a+$b); # Modelo padrão de uso
+                }
+                echo'<br>';
+                $nomeclatura=['Alan', 'Fred', 'Elvis'];
+                foreach($nomeclatura as $no)
+                    saudacao($no);
+
                 
+                function saudacao($dado){
+                    echo "Bom dia, $dado. <br>";
+                }
+                echo'<br>';
+                #Funções com parâmetros opcionais
+                    #definição da função
+                function multiplicar($a, $b=3){
+                    echo $a*$b;
+                }
+
+                #Chamada da função
+                multiplicar(8);
+                echo'<br>';
+                multiplicar(10,15);
+                echo'<br>';
+
+                # Novo Funcionalidade Named Arguments
+                function soma($a, $b=5, $c=20){
+                    echo $a+$b+$c;
+                }
+
+                soma(100, 10, 300);
+                echo'<br>';
+                soma(c:1000, a:0);
+                echo'<br>';
+                soma(500, c:1200);
+                echo'<br>';
+
+                #Adicionais
+                function outraFuncao($a){
+                    $x= func_get_arg(0);
+                    $y= func_get_arg(1);
+                    $z= func_get_arg(2);
+                    echo "$x - $y -$z";
+                    echo '<br>';
+
+                    echo func_num_args(); # Avalia quantos argumentos foram passados para função.
+
+                }
+
+                outraFuncao(10,20,30);
+                echo '<br>';
+
+
+                # Variadic Parâmetro
+                function minha_funcao(...$argumentos){
+                    foreach($argumentos as $arg)
+                        echo "$arg<br>";
+                }
+                minha_funcao(10,20,30,40,50,60,70,80,90,100);
+                echo '<br>';
+
+                # Return de uma Função em php
+
+                function calculo($a,$b){
+                    return $a+$b;
+                }
+                echo calculo(13,54);
+                echo '<br>';
+                $nome= 'Abar';
+                if(avaliar_nome($nome))
+                    echo "O nome está correcto<br>";
+                else
+                    echo "Não é o nome<br>";
+                
+                function avaliar_nome($no){
+                    if($no=='Aba')
+                        return true;
+                    else
+                        return false;
+                }
+
+                echo '<br>';
+                function andar(){
+
+                }
+                function cantar(){
+                    return;
+                }
+
+                if(andar()===null)
+                    echo "Não possue nenhum valor<br>";
+                
+                if(cantar()===null)
+                    echo "Não possue nenhum valor<br>";
+                
+                echo '<br>';
+
+                #Escopo de uma variável
+                    #variável global e local
+                $k= 23;
+                function funcao(){
+                    global $k;
+                    $k=40;
+                } 
+
+                echo"<p>$k</p>";
+                echo '<br>';
+
+                $t= 150;
+                function funcao2(){
+                    $GLOBALS['t']=300;  
+                } 
+                funcao2();
+                echo"<p>$t</p>";
+                echo '<br>';
+
+                #Funções anónimas
+
+                $a= function(){
+                    echo "<p>Olá</p><br>";
+                };
+                echo $a();
+
+                echo '<br>';
+
+                $digo=function($mensagem){
+                    echo "<p> Eu falo: $mensagem</p><br>";
+                };
+
+               echo  $digo("Sábado fatidico");
+
+                echo '<br>';
+
+                $andar= function($metros){
+                    return "Andei $metros metros";
+                };
+                echo $andar(100);
+
+                echo '<br>';
+
+                $w= function(){
+                    return "<p>Função A</p><br>";
+                };
+
+                function juncao($j){
+                    echo $j;
+                }
+                juncao($w());
+                echo '<br>';
+
+                # Closures e Arrow functions
+
+                $x=14;
+                $y=25;
+                $m_closure= function($z) use($x,$y){
+                    echo "$z - $x -$y";
+                    $y +=100; # A instrução não vai alterar o valor de $y
+                };
+                $m_closure(10);
+                echo '<br>';
+                echo "<p>$y</p>";# o valor do y não foi alterado na closure
+                echo '<br>';
+
+                $m_funcao=fn($z)=> "$x-$y-$z";
+                echo $m_funcao(10);
+                echo '<br>';
+
+
+
+
+
+
+
+
+
+
 
 
 
