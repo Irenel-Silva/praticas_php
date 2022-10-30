@@ -454,8 +454,263 @@
 
                     echo '<br>';
 
-                    
+                    ## Introdução a Programação Orientada a objectos POO(OOP)
+                    /* 
+                        Uma classe é um molde/forma/Modelo a partir do qual criamos objectos.
+                        Teoricamente:
+                        Class Humano
+                            >Cabelo
+                            >Genero
+                            >Peso
+                            >Caminhar
 
+                        Homem ->Humano
+                            >Cabelo - castanho //Propriedades ou caracteristicas
+                            >Genero - masculino //Propriedades ou caracteristicas
+                            >Peso - 75 //Propriedades ou caracteristicas
+                            >caminhar() //métodos ou funções que o modelo/objecto realiza
+
+                        Mulher ->Humano
+                            >Cabelo - Claro //Propriedades ou caracteristicas
+                            >Genero - femenino //Propriedades ou caracteristicas
+                            >Peso - 63 //Propriedades ou caracteristicas
+                            >caminhar() //métodos ou funções que o modelo/objecto realiza/faz
+                            >cantar() - pode ter métodos adicionais //métodos ou funções que o modelo/objecto realiza/faz
+                        Instância- Criação de um objecto a partir de uma classe
+                        Constructor- Metodo de é automaticamente executado apos a instanciação de um objecto
+                        
+                    */
+                    
+                    #Classes
+                    class Humano{
+                        #Acess Modifiers/Leves
+                            ##Public- os membros públicos das propriedades e métodos de uma classe, estão sempre acessíveis. 
+                            ##Protected- Um elemento protected pode ser alcançado dentro da classe e dentro de uma qualquer classe que seja uma extensão de outra classe.
+                            ##Private- Só pode ser visível dentro da própia classe. Não é visivel nos objecto instanciados nem noutras classes herdadas.
+
+                        #public $nome = 'Adão';
+                       # public $apelido= 'Barros';
+                        private $nome;
+                        private $apelido;
+                        #Construct
+                        function __construct($n, $a){
+                            $this->nome=$n;
+                            $this->apelido=$a;
+                        }
+                        public function nomeCompleto(){
+                            return $this->nome . ' '. $this->apelido;
+                        }
+
+                    }
+
+                    class Humano1{
+                        public $nome ;
+                        public $apelido;
+                        #Promoção de propriedades em PHP8 PROPERTY PROMOTION NO PHP
+                        #Construct PHP7
+                        function __construct($n, $a){
+                            $this->nome=$n;
+                            $this->apelido=$a;
+                        }
+
+                    }
+
+                    class Humano2{
+                        # PHP8
+                        #Construct
+                        function __construct(public $nome, public $apelido){
+                            $this->nome =$nome;
+                            $this->apelido =$apelido;
+                        }
+                        public function falar(){
+
+                        }
+                        private function andar(){
+                            //Método acessivel dentro da classe
+                        }
+                        
+                        public function movimento(){
+                            $this->andar();
+                        }
+
+                    }
+
+
+                    class JogadorFutebol{
+
+                    }
+                    class FiguraGeometrica{
+                        public $largura, $altura;
+                        public $x, $y;
+                        function novaArea($a, $b){
+                            return $a*$b;
+                        }
+                    }
+                    echo '<br>';
+                    #Classes anónimas
+                    $b= new class{
+                        function teste(){
+                            echo 'Teste - classe anónima';
+                        }
+                    };
+
+                    echo '<br>';
+                    #Instanciar um objecto
+                    $homem = new Humano('Adão', 'Porto');
+                    $mulher= new Humano('Ana', 'Ribeiro');
+
+                    echo $homem->nomeCompleto();
+                    echo '<br>';
+                    echo $mulher->nomeCompleto();
+                    echo '<br>';
+                    $homem= new Humano1('vitor', 'simões');
+                    //$homem->nome="Vitor";
+                    //$homem->apelido="Simões";
+
+                    $mulher= new Humano2('Ana', 'lucia');
+                    $mulher->movimento();
+                    echo '<br>';
+                    echo $homem->nome . ' '. $homem->apelido;
+                    echo '<br>';
+                    echo $mulher->nome . ' '. $mulher->apelido;
+                    echo '<br>';
+                    $b->teste();
+                    echo '<br>';
+
+                    #Heranças | INHERITANCE
+                     ##Mecanismo através do qual podemos criar classes que herdam propriedades e métodos de outra classe.
+                        # A classe inicial da qual as outras vão ser criadas, é designada por classe base
+                        # Todas as classes que herdaram propriedades e métodos são designadas classes derivadas
+                    class Animal{
+                        public $especie;
+                        public $peso;
+                        function tipoEspecie(){
+                            return "Este animal  é da espécie {$this->especie}";
+
+                        }
+                        function mover(){
+                            echo 'Mover a partir da classe base';
+                        }
+                    }
+                    $animal= new Animal();
+                    $animal->especie='Mamíferos';
+                    echo $animal->tipoEspecie();
+                    echo '<br>';
+                    #Herança
+                    class Mamifero extends Animal{
+                        public $quantidade_pernas;
+                        public $tem_pelo;
+                        function temQuantasPernas(){
+                            return "O Animal da espécie  {$this->especie} tem  {$this->quantidade_pernas} pernas";
+                        }
+                    }
+
+                    $mamifero= new Mamifero();
+                    $mamifero->especie='Cavalo';
+                    $mamifero->quantidade_pernas=4;
+                    echo $mamifero->temQuantasPernas();
+                    echo '<br>';
+                    //Tipo_Bicicleta= ['Montanha', 'Corrida', 'competiçãao']
+                    //Tipo_extrutura= ['Liga leve', 'Alumínio', 'Ferro', 'Cobre']
+                    class Veiculo{
+                        public $marca;
+                        public $ano;
+                        public $tipo_de_locomocao;
+                        #FINAL
+                        final function mover(){
+                            echo "Velocidade máxima";
+                        }
+
+                    }
+
+                    class Automovel extends Veiculo{
+                        public $potencia;
+                        public $autonomia;
+                        public $num_portas;
+                    }
+
+
+                    class Bicicleta extends Veiculo{
+                        public $tipo_bicicleta;
+                        public $tipo_estrutura;
+                        /*function mover(){
+                            echo "Velocidade Mínima";
+                        }*/
+                    }
+
+
+                    echo '<br>';
+                    #Overriding
+                        ## O mecanismo de overriding permite a uma classe derivada ter métodos reescritos especificamente  para essa classe
+                    class Peixe extends Animal{
+                        #OVERRIDING
+                        function mover(){
+                            echo 'Mover a partir da classe peixe.';
+                        }
+                    }
+
+                    $animal1= new Animal();
+                    $animal1->mover();
+                    echo '<br>';
+                    $mamifero1= new Mamifero();
+                    $mamifero1->mover();
+                    echo '<br>';
+                    $peixe= new Peixe();
+                    $peixe->mover();
+                    echo '<br>';
+                    class Retangulo{
+                        public $largura, $altura;
+                        function __construct($l, $a)
+                        {
+                            $this->largura= $l;
+                            $this->altura=$a;
+                        }
+                        function calcularArea(){
+                            return $this->largura*$this->altura;
+                        }
+                    }
+
+                    class Quadrado extends Retangulo{
+                        function __construct($l)
+                        {
+                            $this->largura=$l;
+                            $this->altura=$l;
+                        }
+
+                    }
+
+                    $ret= new Retangulo(10,20);
+                    $quad= new Quadrado(10);
+                    echo "O resultado do Rectangulo é {$ret->calcularArea()}";
+                    echo '<br>';
+                    echo $quad->calcularArea();
+                    echo '<br>';
+                    # chamando um construtor de class usando o Parent
+                    class Quadrado1 extends Retangulo{
+                        function __construct($l)
+                        {
+                            parent::__construct($l,$l);
+                        }
+                    }
+                    $quad1=new Quadrado1(4);
+                    echo $quad1->calcularArea();
+                    echo '<br>';
+                    // Outra forma 
+                    class Quadrado2 extends Retangulo{
+                        function __construct($l)
+                        {
+                            Retangulo::__construct($l,$l);
+                        }
+                    }
+                    $quad2=new Quadrado2(6);
+                    echo $quad2->calcularArea();
+                    echo '<br>';
+
+                    #FINAL
+                     ##Impede que uma classe derivada possa fazer override de métodos.
+
+
+                    echo '<br>';
 
 
 
