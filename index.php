@@ -424,6 +424,37 @@
                 echo $m_funcao(10);
                 echo '<br>';
 
+                #Generators em php 'Função Adicional'
+                    #função que permite gerar séries de valores
+                    # os valores são devolvidos por uma instrunção yield e ela guarda o estado da função
+
+                    function buscar_valor(){
+                        for($i=0; $i<4; $i++)
+                            yield $i;
+                    }
+
+
+                    foreach(buscar_valor() as $num)
+                        echo "$num<br>";
+
+                        echo '<br>';
+
+                    function buscar_nome(){
+                        yield 'Antonia';
+                        yield 'Irinel';
+                        yield from ['Emanuel', 'naiara', 'Maria'];
+                        yield 'Vilnara';
+                        yield 'Maria Helena';
+
+                    }
+
+                    foreach(buscar_nome() as $no){
+                        echo "$no<br>";
+                    }
+
+                    echo '<br>';
+
+                    
 
 
 
