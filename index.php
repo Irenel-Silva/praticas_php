@@ -478,7 +478,12 @@
                             >cantar() - pode ter métodos adicionais //métodos ou funções que o modelo/objecto realiza/faz
                         Instância- Criação de um objecto a partir de uma classe
                         Constructor- Metodo de é automaticamente executado apos a instanciação de um objecto
+                        Uma boa prátia é criar o  menor número de propriedades de uma classe como publicas.
+                        Colocar uma propriedade como pública é expor em demasia essa propriedade.
                         
+                        Para definir correctamente este tipo de situações, podemos usar métodos para defenir e ir buscar
+                        os valores das propriedades privadas. Estes métodos permitir garantir que a integridade das propriedades
+                        seja mantida.
                     */
                     
                     #Classes
@@ -492,6 +497,7 @@
                        # public $apelido= 'Barros';
                         private $nome;
                         private $apelido;
+                        //public $idade;
                         #Construct
                         function __construct($n, $a){
                             $this->nome=$n;
@@ -518,9 +524,26 @@
                     class Humano2{
                         # PHP8
                         #Construct
+                        #Setter-> definir um valor 
+                        # Getter- buscar um valor
+
+                        private $idade=0;
+
+
                         function __construct(public $nome, public $apelido){
                             $this->nome =$nome;
                             $this->apelido =$apelido;
+                        }
+                        //SETTER
+                        public function setIdade($valor){
+                            if (is_numeric($valor)) {
+                                $this->idade=$valor;
+                            }
+                            
+                        }
+                        //GETTER
+                        public function GetIdade(){
+                            return $this->idade;
                         }
                         public function falar(){
 
@@ -532,6 +555,12 @@
                         public function movimento(){
                             $this->andar();
                         }
+                        //Static ou class Members- apenas existentes uma vez na classe
+                        static $idad;
+                        static function movendo(){
+
+                        }
+
 
                     }
 
@@ -711,9 +740,191 @@
 
 
                     echo '<br>';
+                    #Trabalhando com Getters E Setters
+                        ##Getters && Setters
+
+                    $eu= new Humano2('albo', 'Delrei');
+                    $eu->setIdade(45);
+                    echo $eu->GetIdade();
+                    echo '<br>';
+                    class Tempo{
+                        private $segundos;
+                        ##SETTERS
+                        function setSegundos($valor){
+                            if(!is_numeric($valor) || $valor<0){
+                                $this->segundos=0;
+                            }
+                            else{
+                                $this->segundos=$valor;
+                            }
+                        }
+                        ##GETTERS
+                        public function getSegundos(){
+                            return $this->segundos;
+                        }
+
+
+                        function setMinutos($valor){
+                            if($valor==0){
+                                $this->segundos=0;
+                            }else {
+                                $this->segundos=$valor*60;
+                            }
+                            
+                        }
+                        
+
+
+                        public function getMinutos(){
+                            return $this->segundos/60;
+                        }
+
+                    }    
+
+                    echo '<br>';
+                    $tempo= new Tempo();
+                    $tempo->setSegundos(115);
+                    echo $tempo->getSegundos();
+                    echo '<br>';
+                    echo $tempo->getMinutos() .' Minutos';
+                    echo '<br>';
+                    $tempo->setMinutos(5);
+                    echo 'os 5 minutos equivalem a '. $tempo->getSegundos().' Segundos';
+                    echo '<br>';
+                    //Static ou class Members- apenas existentes uma vez na classe
+                    class operacao{
+                        static $valor1;
+                        static $valor2;
+                        static function adic(){
+                            return self::$valor1+self::$valor2;
+                        }
+                    }
+
+                    operacao::$valor1=13;
+                    operacao::$valor2=33;
+                    echo operacao::adic();
+
+
+                    echo '<br>';
+                    class operacoesfundamentais{
+                        //retorna um número sorteado entre $min e $max
+                        static function numeroAleatorio($min, $max){
+                            return rand($min, $max);
+                        }
+                        static function calcularForma($a, $b){
+                            //(a x 2)+(a x b)
+                            return ($a*2)+($b*$a);
+                        }
+                        static function criarNome(){
+                            $nomed=['Antonia', 'Emanuel', 'Sab', 'Naiara', 'Etna', 'Nara'];
+                            $apeld=['silva', 'almeida', 'santos', 'rodrigues', 'oliveira', 'costa'];
+                            return $nomed[rand(0, count($nomed)-1)]. ' '.$apeld[rand(0,count($apeld)-1)];
+                        }
+                    }
+                    echo operacoesfundamentais::numeroAleatorio(0,1000);
+                    echo '<br>';
+                    echo operacoesfundamentais::calcularForma(12,44);
+                    echo '<br>';
+                    echo operacoesfundamentais::criarNome();
+                    echo '<br>';
+
+                    # CONSTANTS, DEFINE, DEFINED
+
+                    ## Para verificar se uma constante já existe
+                    if(!defined('APP_NAME')){
+                        define('APP_NAME', 'Minha Aplicação');
+                    } 
+                    echo APP_NAME;
+                    echo '<br>';
+                    #outra forma 
+                    defined('CONSTANTE') or define('CONSTANTE', 'VALOR');
+
+                    #CONSTANTES EM UM ARRAY
+                    const NAME= ['joao', 'Ana', 'carlos'];
+                    echo '<br>';
+                    echo NAME[0];
+                    echo '<br>';
+                    define('NAMES', ['bk', 'pk', 'l7', 'xama']);
+                    echo NAMES[2];
+                    echo '<br>';
+                    # CONSTANTES MÁGICAS
+                        ## As constantes mágicas são 8 e são designadas assim por que o seu valor 
+                        ## varia automaticamente dependendo onde estão  a ser usadas.
+                    //echo __LINE__ .'<br>'; #indica a linha do script;
+                    //echo __FILE__ .'<br>'; #indica o caminho completo do script;
+                    //echo __DIR__ .'<br>'; #indica a PASTA ONDE O script ESTÁ ALOJADO;
+
+
+                    echo '<br>';
+                    #CLASSES ABSTRATAS
+                    /*
+                        Uma classe abstrata é constituida por uma implementação parcial a partir das quais outras classes podem crescer.
+                        
+                        Quando uma classe é declarada como abstracta, isso significa que ela tem métodos incopletos que, obrigatoriamente 
+                        têm que ser implementados nas classes que a herdam.
+
+                        As classes Abstractas não podem ser instanciadas. Servem apenas para poderem ser herdadas por outras classes.
+
+                        Uma classe Abstrata(CA) permite a implementação parcial de métodos e a definição de um modelo de implementação
+                        de outros métodos. Isto permite em modelos de POO, juntamente com outro mecanismo, designado por interfaces, a estruturação de codigo
+                        que segue os melhores padrões de escrita. É uma materia fundamentalmente destinada para quem constroi códigos para ser implementado por 
+                        Outros programadores.
+            
+
+                    */
+
+                    abstract class Forma
+                    {
+                        public $largura= 100;
+                        public $altura= 200;
+                        abstract public function area();
+                        function Altura(){
+                            return $this->altura;
+                        }  
+                    }
+
+                    class Rectangu extends Forma{
+                        public function area()
+                        {
+                            return $this->largura*$this->altura;
+                        }
+                    }
+
+                    $r= new Rectangu();
+                    echo $r->area();
+                    echo '<br>';
+                    echo $r->Altura();
+                    echo '<br>';
+                    #TRAITS 
+                    /*
+                        São grupos de métodos que podem ser inseridos dentro de classes.
+                        foram adicionados a linguagem php para aumentar a reutilização de códigos.
+                     */
+        
+                    
+                     trait MinhasHabilidade{
+                        public function falar($mensagem){
+                            echo "Eu digo: $mensagem";
+                        }
+
+                        function saltar($metross){
+                            echo "EU salto $metross metros.";
+                        }
+                     }
+
+                     class Ser{
+                        use MinhasHabilidade;
+                     }
+
+                     $sou= new Ser();
+                     echo $sou->falar('Boa noite');
+                     echo '<br>';
+                     echo $sou->saltar(1);
+                    echo '<br>';
 
 
 
+                    
 
 
 
