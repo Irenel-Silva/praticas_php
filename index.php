@@ -921,6 +921,88 @@
                      echo '<br>';
                      echo $sou->saltar(1);
                     echo '<br>';
+                    #IMPORTAÇÃO DE SCRIPTS USANDO INCLUDE
+                     include 'config.php';
+                     echo MInha_app;
+
+                    echo '<br>';
+                     include 'include_require/dados.php';
+                     echo '<br>';
+                     //Quando é necessário andar para trás na árvore da pasta usamos ../
+                        ##include '../caso.php'
+
+                    echo '<br>';
+                    ##echo $hoje->format('d-m-Y');
+                    echo '<br>';
+                    #Require - Mais aconselhavel em aplicações grandes o uso de require ao contrario do include pois ela identifica o erro 
+                        #e interrompe a a execução do script.
+                    require 'config.php';
+                    echo '<br>';
+                    #include_once- Inclui o script uma única vez 
+                    #Require_once- Inclui o script uma única vez;
+
+                    echo '<br>';
+                     #TYPE DECLARATYONS
+                     function boca(array $mes){
+                        echo $mes;
+                     }
+                     #Strinct Typing
+                   # declare(strict_types=1);
+                    function calculadora(int $v1, int $v2){
+                        return $v1+$v2;
+                    }
+
+                    echo calculadora(10,24);
+                    echo '<br>';
+                    #echo calculadora('a', 'b');
+                    echo '<br>';
+                    //ISSET, EMPTY, IS_NULL, UNSET 
+                    #ISSET
+                    $k2= null;
+                    echo isset($k2) ? 'Sim': 'Não';
+                    echo '<br>';
+                    #EMPTY
+                    $k3='Aba';
+                    empty($k3);
+                    echo '<br>';
+
+                    # IS_NULL
+                    $k4=null;
+                    is_null($k4);
+                    echo '<br>';
+                    #UNSET
+                    $ka='ada';
+                    unset($ka);
+                    echo '<br>';
+                    #NULL coalescing operador
+                    $x= null;
+                    $aka= $x ?? 'Sem Nome';
+                    echo $aka;
+                    echo '<br>';
+                    $ape= null;
+                    $ape ??= 'Apelido desconhecido';
+                    echo $ape;
+                    echo '<br>';
+                    #PRINT_R
+                    echo '<pre>';
+                    $ad=[1,2,3];
+                    print_r($ad);
+                    echo '<br>';
+                    #VAR_DUMP
+                    var_dump($ad);
+                    echo '<br>';
+                    #VAR_EXPORT
+                    var_export($ad);
+                    $numeracao=[];
+                    for ($i=0; $i <4 ; $i++) { 
+                        $numeracao[]=rand(0,100);
+                    }
+                    var_export($numeracao);
+                    echo '<br>';
+
+
+    
+
 
 
 
